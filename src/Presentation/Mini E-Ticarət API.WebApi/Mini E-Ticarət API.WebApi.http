@@ -1,0 +1,6 @@
+@Mini_E_Ticarət_API.WebApi_HostAddress = http://localhost:5236
+
+GET {{Mini_E_Ticarət_API.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,40 @@
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\appsettings.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.WebApi.exe
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.WebApi.deps.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.WebApi.runtimeconfig.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.WebApi.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.WebApi.pdb
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Application.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Domain.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Infrastructure.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Persistence.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Infrastructure.pdb
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Persistence.pdb
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Application.pdb
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\bin\Debug\net8.0\Mini E-Ticarət API.Domain.pdb
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.csproj.AssemblyReference.cache
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.AssemblyInfoInputs.cache
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.AssemblyInfo.cs
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets\msbuild.Mini E-Ticarət API.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets\msbuild.build.Mini E-Ticarət API.WebApi.props
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Mini E-Ticarət API.WebApi.props
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Mini E-Ticarət API.WebApi.props
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\scopedcss\bundle\Mini E-Ticarət API.WebApi.styles.css
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-T.EE4E8368.Up2Date
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\refint\Mini E-Ticarət API.WebApi.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.pdb
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.genruntimeconfig.cache
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\ref\Mini E-Ticarət API.WebApi.dll

@@ -1,0 +1,52 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Mini E-Ticarət API.Persistence/1.0.0": {
+        "runtime": {
+          "Mini E-Ticarət API.Persistence.dll": {}
+        }
+      },
+      "Mini E-Ticarət API.Application/1.0.0": {
+        "dependencies": {
+          "Mini E-Ticarət API.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Mini E-Ticarət API.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Mini E-Ticarət API.Domain/1.0.0": {
+        "runtime": {
+          "Mini E-Ticarət API.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Mini E-Ticarət API.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Mini E-Ticarət API.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Mini E-Ticarət API.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
