@@ -13,3 +13,4 @@ C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Core\Mini E-Ticarət API.Appli
 C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Core\Mini E-Ticarət API.Application\obj\Debug\net8.0\refint\Mini E-Ticarət API.Application.dll
 C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Core\Mini E-Ticarət API.Application\obj\Debug\net8.0\Mini E-Ticarət API.Application.pdb
 C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Core\Mini E-Ticarət API.Application\obj\Debug\net8.0\ref\Mini E-Ticarət API.Application.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Core\Mini E-Ticarət API.Application\obj\Debug\net8.0\Mini E-Ticarət API.Application.sourcelink.json

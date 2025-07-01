@@ -38,3 +38,4 @@ C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət A
 C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.pdb
 C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.genruntimeconfig.cache
 C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\ref\Mini E-Ticarət API.WebApi.dll
+C:\Users\MSI\source\repos\Mini E-Ticarət API\src\Presentation\Mini E-Ticarət API.WebApi\obj\Debug\net8.0\Mini E-Ticarət API.WebApi.sourcelink.json
