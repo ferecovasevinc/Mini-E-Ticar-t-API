@@ -1,4 +1,10 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Mini_E_Ticarət_API.Persistence.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<Mini_E_Ticarət_APIDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 // Add services to the container.
 

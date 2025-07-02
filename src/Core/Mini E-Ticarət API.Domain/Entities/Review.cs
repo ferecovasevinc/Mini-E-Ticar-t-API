@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Mini_E_Ticarət_API.Domain.Entities;
 
-namespace Mini_E_Ticarət_API.Domain.Entities
+public class Review : BaseEntity
 {
-    internal class Review
-    {
-    }
+    public string Comment { get; set; }
+    public int Rating { get; set; }
+
+    public int AppUserId { get; set; }
+    public AppUser AppUser { get; set; }
+
+    public int ProductId { get; set; }
+    public Product Product { get; set; }
 }
