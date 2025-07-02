@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Mini_E_Ticarət_API.Domain.Entities;
 
-namespace Mini_E_Ticarət_API.Domain.Entities
+public class Category : BaseEntity
 {
-    internal class Category
-    {
-    }
+    public string Name { get; set; }
+
+    public ICollection<Product> Products { get; set; }
 }
