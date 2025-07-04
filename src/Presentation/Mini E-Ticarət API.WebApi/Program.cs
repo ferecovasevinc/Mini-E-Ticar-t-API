@@ -12,6 +12,10 @@ using Mini_E_Ticarət_API.Persistence.Contexts;
 using Mini_E_Ticarət_API.Persistence.Repositories;
 using Mini_E_Ticarət_API.Persistence.Services;
 using Mini_E_Ticarət_API.WebApi.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
