@@ -11,6 +11,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
 namespace Mini_E_Ticarət_API.Persistence.Services;
 
@@ -59,6 +60,9 @@ public class UserService : IUserService
 
                 return new BaseResponse<string>(errorsMessage.ToString(), HttpStatusCode.BadRequest);
             }
+
+        var confirmEmailLink = await GetEmailConfirmLink(newUser);
+
         return new BaseResponse<string>("Successfully created", HttpStatusCode.Created);
     }
 
@@ -67,7 +71,12 @@ public class UserService : IUserService
         var existedUser = await _userManager.FindByEmailAsync(dto.Email);
         if (existedUser is null)
         {
-            return new("Email or password is wrong", null, HttpStatusCode.NotFound);
+            return new("Email or password is wrong", HttpStatusCode.NotFound);
+        }
+
+        if (!existedUser.EmailConfirmed)
+        {
+            return new("Please confirm your email", HttpStatusCode.BadRequest);
         }
 
         SignInResult signInResult = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, true, true);
@@ -138,6 +147,30 @@ public class UserService : IUserService
         }
 
         return new("Roles successfully assigned to the user", HttpStatusCode.OK);
+    }
+
+    public async Task<BaseResponse<string>> ConfirmEmail(string userId, string token)
+    {
+        var existedUser = await _userManager.FindByIdAsync(userId);
+        if (existedUser is null)
+        {
+            return new("Email confirmation failed", HttpStatusCode.BadRequest);
+        }
+
+        var result = await _userManager.ConfirmEmailAsync(existedUser, token);
+        if (!result.Succeeded)
+        {
+            return new("Email confirmation failed", HttpStatusCode.BadRequest);
+        }
+        return new("Email confirmed successfully",null, HttpStatusCode.OK);
+    }
+
+    private async Task<string> GetEmailConfirmLink(AppUser user)
+    {
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var link = $"https://localhost:7248/api/Accounts/ConfirmEmail?userId={user.Id}&token={HttpUtility.UrlEncode(token)}";
+        Console.WriteLine("Confirm Email link: "+token);
+        return link;
     }
 
     private async Task<TokenResponse> GenerateTokenAsync(AppUser user)

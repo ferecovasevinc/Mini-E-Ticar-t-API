@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mini_E_Ticarət_API.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using Mini_E_Ticarət_API.Persistence.Contexts;
 namespace Mini_E_Ticarət_API.Persistence.Migrations
 {
     [DbContext(typeof(Mini_E_Ticarət_APIDbContext))]
-    partial class Mini_E_Ticarət_APIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250707120354_AddRefreshFieldsToAppUserProperly")]
+    partial class AddRefreshFieldsToAppUserProperly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
