@@ -3,7 +3,7 @@
 public class Order : BaseEntity
 {
     public string Name { get; set; }
-    public int BuyerId { get; set; }
+    public Guid BuyerId { get; set; }
     public DateTime OrderDate { get; set; }
     public decimal TotalPrice { get; set; }
 

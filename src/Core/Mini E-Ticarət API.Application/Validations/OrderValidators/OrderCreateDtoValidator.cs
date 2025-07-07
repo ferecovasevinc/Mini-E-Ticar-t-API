@@ -12,7 +12,7 @@ public class OrderCreateDtoValidator : AbstractValidator<OrderCreateDto>
             .MaximumLength(100).WithMessage("Order name cannot exceed 100 characters.");
 
         RuleFor(x => x.BuyerId)
-            .GreaterThan(0).WithMessage("Buyer ID must be greater than 0.");
+            .NotEqual(Guid.Empty).WithMessage("Buyer ID must be provided.");
 
         RuleFor(x => x.TotalPrice)
             .GreaterThan(0).WithMessage("Total price must be greater than 0.");

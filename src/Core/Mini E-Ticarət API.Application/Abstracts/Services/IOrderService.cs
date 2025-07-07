@@ -5,9 +5,8 @@ namespace Mini_E_Ticarət_API.Application.Abstracts.Services;
 
 public interface IOrderService
 {
-    Task<BaseResponse<string>> CreateAsync(OrderCreateDto dto);
-    Task<BaseResponse<List<OrderListDto>>> GetAllAsync();
-    Task<BaseResponse<OrderListDto>> GetByIdAsync(Guid id);
-    Task<BaseResponse<string>> UpdateAsync(OrderUpdateDto dto);
-    Task<BaseResponse<string>> DeleteAsync(Guid id);
+    Task<BaseResponse<string>> CreateAsync(OrderCreateDto dto, string? userId);
+    Task<BaseResponse<List<OrderListDto>>> GetMyOrdersAsync(string? userId);
+    Task<BaseResponse<List<OrderListDto>>> GetSalesAsync(string? userId);
+    Task<BaseResponse<OrderDetailDto>> GetByIdAsync(Guid id, string? userId);
 }

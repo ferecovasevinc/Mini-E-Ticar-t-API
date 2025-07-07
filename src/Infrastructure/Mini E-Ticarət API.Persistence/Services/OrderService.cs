@@ -17,13 +17,16 @@ public class OrderService : IOrderService
         _orderRepository = orderRepository;
     }
 
-    public async Task<BaseResponse<string>> CreateAsync(OrderCreateDto dto)
+    public async Task<BaseResponse<string>> CreateAsync(OrderCreateDto dto, string? userId)
     {
+        if (!Guid.TryParse(userId, out Guid buyerGuid))
+            return new BaseResponse<string>("Invalid user ID", null, HttpStatusCode.BadRequest);
+
         Order order = new()
         {
             Name = dto.Name,
-            BuyerId = dto.BuyerId,
-            OrderDate = dto.OrderDate,
+            BuyerId = buyerGuid,
+            OrderDate = DateTime.UtcNow,
             TotalPrice = dto.TotalPrice,
             Status = "Pending"
         };
@@ -38,26 +41,7 @@ public class OrderService : IOrderService
     {
         var orders = await _orderRepository.GetAll().ToListAsync();
 
-        var dtos = orders.Select(o => new OrderListDto
-        {
-            Id = o.Id,
-            Name = o.Name,
-            BuyerId = o.BuyerId,
-            OrderDate = o.OrderDate,
-            TotalPrice = o.TotalPrice,
-            Status = o.Status
-        }).ToList();
-
-        return new BaseResponse<List<OrderListDto>>("Orders fetched", dtos, HttpStatusCode.OK);
-    }
-
-    public async Task<BaseResponse<OrderListDto>> GetByIdAsync(Guid id)
-    {
-        var order = await _orderRepository.GetByIdAsync(id);
-        if (order == null)
-            return new BaseResponse<OrderListDto>("Order not found", null, HttpStatusCode.NotFound);
-
-        var dto = new OrderListDto
+        var dtos = orders.Select(order => new OrderListDto
         {
             Id = order.Id,
             Name = order.Name,
@@ -65,9 +49,97 @@ public class OrderService : IOrderService
             OrderDate = order.OrderDate,
             TotalPrice = order.TotalPrice,
             Status = order.Status
+        }).ToList();
+
+        return new BaseResponse<List<OrderListDto>>("Orders fetched", dtos, HttpStatusCode.OK);
+    }
+
+    public async Task<BaseResponse<List<OrderListDto>>> GetMyOrdersAsync(string? userId)
+    {
+        if (!Guid.TryParse(userId, out Guid buyerGuid))
+            return new BaseResponse<List<OrderListDto>>("Invalid user ID", null, HttpStatusCode.BadRequest);
+
+        var orders = await _orderRepository
+            .GetAll()
+            .Where(o => o.BuyerId == buyerGuid)
+            .ToListAsync();
+
+        var dtos = orders.Select(order => new OrderListDto
+        {
+            Id = order.Id,
+            Name = order.Name,
+            BuyerId = order.BuyerId,
+            OrderDate = order.OrderDate,
+            TotalPrice = order.TotalPrice,
+            Status = order.Status
+        }).ToList();
+
+        return new BaseResponse<List<OrderListDto>>("Orders fetched", dtos, HttpStatusCode.OK);
+    }
+
+    public async Task<BaseResponse<List<OrderListDto>>> GetSalesAsync(string? userId)
+    {
+        if (!Guid.TryParse(userId, out Guid sellerGuid))
+            return new BaseResponse<List<OrderListDto>>("Invalid user ID", null, HttpStatusCode.BadRequest);
+
+        var orders = await _orderRepository
+            .GetAll()
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .Where(o => o.OrderProducts.Any(op => op.Product.AppUserId == sellerGuid))
+            .ToListAsync();
+
+        var dtos = orders.Select(order => new OrderListDto
+        {
+            Id = order.Id,
+            Name = order.Name,
+            BuyerId = order.BuyerId,
+            OrderDate = order.OrderDate,
+            TotalPrice = order.TotalPrice,
+            Status = order.Status
+        }).ToList();
+
+        return new BaseResponse<List<OrderListDto>>("Sales fetched", dtos, HttpStatusCode.OK);
+    }
+
+    public async Task<BaseResponse<OrderDetailDto>> GetByIdAsync(Guid id, string? userId)
+    {
+        var order = await _orderRepository
+            .GetAll()
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .FirstOrDefaultAsync(o => o.Id == id);
+
+        if (order == null)
+            return new BaseResponse<OrderDetailDto>("Order not found", null, HttpStatusCode.NotFound);
+
+        if (!Guid.TryParse(userId, out Guid currentUserGuid))
+            return new BaseResponse<OrderDetailDto>("Invalid user ID", null, HttpStatusCode.BadRequest);
+
+        var isBuyer = order.BuyerId == currentUserGuid;
+        var isSeller = order.OrderProducts.Any(op => op.Product.AppUserId == currentUserGuid);
+
+        if (!isBuyer && !isSeller)
+            return new BaseResponse<OrderDetailDto>("Access denied", null, HttpStatusCode.Forbidden);
+
+        OrderDetailDto dto = new OrderDetailDto
+        {
+            Id = order.Id,
+            Name = order.Name,
+            BuyerId = order.BuyerId,
+            OrderDate = order.OrderDate,
+            TotalPrice = order.TotalPrice,
+            Status = order.Status,
+            Products = order.OrderProducts.Select(op => new OrderProductDto
+            {
+                ProductId = op.ProductId,
+                ProductName = op.Product.Name,
+                Quantity = op.Quantity,
+                Price = op.Price
+            }).ToList()
         };
 
-        return new BaseResponse<OrderListDto>("Order fetched", dto, HttpStatusCode.OK);
+        return new BaseResponse<OrderDetailDto>("Order details", dto, HttpStatusCode.OK);
     }
 
     public async Task<BaseResponse<string>> UpdateAsync(OrderUpdateDto dto)
