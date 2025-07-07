@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using Mini_E_Ticarət_API.Application.DTOs.CategoryDtos;
 
-namespace Mini_E_Ticarət_API.Application.Validations.CategoryValidators
+namespace Mini_E_Ticarət_API.Application.Validations.CategoryValidators;
+
+public class CategoryUpdateDtoValidator : AbstractValidator<CategoryUpdateDto>
 {
-    internal class CategoryUpdateDtoValidator
+    public CategoryUpdateDtoValidator()
     {
+        RuleFor(c => c.Name)
+            .NotEmpty().WithMessage("Name can not be null.")
+            .MinimumLength(3).WithMessage("Name should be minimum 3 characters.");
     }
 }

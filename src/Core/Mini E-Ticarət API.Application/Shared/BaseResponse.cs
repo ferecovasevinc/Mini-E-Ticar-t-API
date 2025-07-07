@@ -29,7 +29,7 @@ public class BaseResponse<T>
         StatusCode = statusCode;
     }
 
-    public BaseResponse(string message, T data, HttpStatusCode statusCode)
+    public BaseResponse(string message, T? data, HttpStatusCode statusCode)
     {
         Message = message;
         Data = data; 

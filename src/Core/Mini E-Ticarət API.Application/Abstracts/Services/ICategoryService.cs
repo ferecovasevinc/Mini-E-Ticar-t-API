@@ -6,9 +6,10 @@ namespace Mini_E_Ticarət_API.Application.Abstracts.Services;
 public interface ICategoryService
 {
     Task<BaseResponse<string>> AddAsync(CategoryCreateDto dto);
-    Task UpdateAsync(CategoryUpdateDto dto);
-    Task DeleteAsync(int id);
-    Task<CategoryCreateDto> GetAsync(int id);
-    Task<CategoryUpdateDto> GetAsync(string search);
-    Task<List<CategoryGetDto>> GetAll();
+    Task<BaseResponse<string>> DeleteAsync(Guid id);
+    Task<BaseResponse<CategoryUpdateDto>> UpdateAsync(CategoryUpdateDto dto);
+    Task<BaseResponse<CategoryGetDto>> GetByIdAsync(Guid id);
+    Task<BaseResponse<CategoryGetDto>> GetByNameAsync(string search);
+    Task<BaseResponse<List<CategoryGetDto>>> GetAllAsync();
+
 }

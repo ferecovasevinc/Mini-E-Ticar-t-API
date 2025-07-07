@@ -7,10 +7,10 @@ public class Product : BaseEntity
     public decimal Price { get; set; }
     public bool IsAvailable { get; set; } = true;
 
-    public int CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
     public Category Category { get; set; }
 
-    public int AppUserId { get; set; }
+    public Guid AppUserId { get; set; }
     public AppUser AppUser { get; set; }
 
     public ICollection<Image> Images { get; set; } = new List<Image>();

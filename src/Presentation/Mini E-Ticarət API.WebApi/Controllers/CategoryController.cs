@@ -1,8 +1,5 @@
-﻿using GoogleApi.Entities;
-using MailChimp.Net.Core;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Mini_E_Ticarət_API.Application.Abstracts.Repositories;
 using Mini_E_Ticarət_API.Application.Abstracts.Services;
 using Mini_E_Ticarət_API.Application.DTOs.CategoryDtos;
 using Mini_E_Ticarət_API.Application.Shared;
@@ -36,23 +33,31 @@ public class CategoryController : ControllerBase
 
     // POST api/<CategoriesController>
     [HttpPost]
+    [Authorize(Policy = Permissions.Category.Create)]
     [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.Created)]
     [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.InternalServerError)]
     public async Task<IActionResult> Post([FromBody] CategoryCreateDto dto)
     {
-        var result=await _categoryService.AddAsync(dto);
-        return StatusCode((int)result.StatusCode,result);
+        var result = await _categoryService.AddAsync(dto);
+        return StatusCode((int)result.StatusCode, result);
     }
 
     // PUT api/<CategoriesController>/5
     [HttpPut("{id}")]
-    public void Put(int id,[FromBody] string value)
+    [Authorize]
+    [ProducesResponseType(typeof(BaseResponse<CategoryUpdateDto>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> Put(Guid id, [FromBody] CategoryUpdateDto dto)
     {
+        var result = await _categoryService.UpdateAsync(dto);
+        return StatusCode((int)result.StatusCode, result);
     }
 
     // DELETE api/<CategoriesController>/5
     [HttpDelete("{id}")]
+    [Authorize]
     public void Delete(int id)
     {
     }

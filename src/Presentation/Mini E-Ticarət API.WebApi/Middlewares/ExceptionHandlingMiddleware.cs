@@ -54,7 +54,7 @@ public class ExceptionHandlingMiddleware
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             var response = new BaseResponse<string>(
-                message: "An unexpected  error occurred. Please try again later.",
+                message: $"Xəta baş verdi: {ex.Message}",
                 isSuccess: false,
                 statusCode: HttpStatusCode.InternalServerError
             );

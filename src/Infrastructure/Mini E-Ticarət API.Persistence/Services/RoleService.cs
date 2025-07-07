@@ -1,0 +1,54 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Mini_E_Ticarət_API.Application.Abstracts.Services;
+using Mini_E_Ticarət_API.Application.DTOs.RoleDtos;
+using Mini_E_Ticarət_API.Application.Shared;
+using System.Net;
+using System.Security.Claims;
+
+namespace Mini_E_Ticarət_API.Persistence.Services;
+
+public class RoleService : IRoleService
+{
+    private RoleManager<IdentityRole<Guid>> _roleManager { get; }
+
+    public RoleService(RoleManager<IdentityRole<Guid>> roleManager)
+    {
+        _roleManager = roleManager;
+    }
+
+    public async Task<BaseResponse<string?>> CreateRole(RoleCreateDto dto)
+    {
+        var existingRole = await _roleManager.FindByNameAsync(dto.Name);
+        if (existingRole is not null)
+        {
+            return new BaseResponse<string?>("Role already exists", HttpStatusCode.BadRequest);
+        }
+
+        var identityRole = new IdentityRole<Guid>
+        {
+            Id = Guid.NewGuid(),
+            Name = dto.Name,
+            NormalizedName = dto.Name.ToUpper()
+        };
+
+        var result = await _roleManager.CreateAsync(identityRole);
+
+        if (!result.Succeeded)
+        {
+            var errorMessages = string.Join(";", result.Errors.Select(e => e.Description));
+            return new BaseResponse<string?>(errorMessages, HttpStatusCode.BadRequest);
+        }
+
+        foreach (var permission in dto.PermissionList.Distinct())
+        {
+            var claimResult = await _roleManager.AddClaimAsync(identityRole, new Claim("Permission", permission));
+            if (!claimResult.Succeeded)
+            {
+                var error = string.Join(";", claimResult.Errors.Select(e => e.Description));
+                return new BaseResponse<string?>($"Role created, but adding permission '{permission}' failed: {error}", HttpStatusCode.PartialContent);
+            }
+        }
+
+        return new BaseResponse<string?>("Role created successfully", HttpStatusCode.Created);
+    }
+}

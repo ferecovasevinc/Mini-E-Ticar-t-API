@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Mini_E_Ticarət_API.Persistence.Contexts;
 
-public class Mini_E_Ticarət_APIDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
+public class Mini_E_Ticarət_APIDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
 {
     public Mini_E_Ticarət_APIDbContext(DbContextOptions<Mini_E_Ticarət_APIDbContext> options) : base(options)
     {
