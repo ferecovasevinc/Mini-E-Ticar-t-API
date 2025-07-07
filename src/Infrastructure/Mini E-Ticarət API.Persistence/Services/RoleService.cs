@@ -51,4 +51,22 @@ public class RoleService : IRoleService
 
         return new BaseResponse<string?>("Role created successfully", HttpStatusCode.Created);
     }
+
+    public async Task<BaseResponse<string?>> DeleteRole(string roleName)
+    {
+        var role = await _roleManager.FindByNameAsync(roleName);
+        if (role is null)
+        {
+            return new BaseResponse<string?>("Role not found", HttpStatusCode.NotFound);
+        }
+
+        var result = await _roleManager.DeleteAsync(role);
+        if (!result.Succeeded)
+        {
+            var errors = string.Join(";", result.Errors.Select(e => e.Description));
+            return new BaseResponse<string?>($"Failed to delete role: {errors}", HttpStatusCode.BadRequest);
+        }
+
+        return new BaseResponse<string?>("Role deleted successfully", HttpStatusCode.OK);
+    }
 }

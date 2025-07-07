@@ -17,51 +17,57 @@ public class CategoryController : ControllerBase
         _categoryService = categoryService;
     }
 
-    // GET: api/<CategoriesController>
+    // GET: api/category
     [HttpGet]
-    public IEnumerable<string> Get()
+    [ProducesResponseType(typeof(BaseResponse<List<CategoryGetDto>>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> GetAll()
     {
-        return new string[] { "value1", "value2" };
+        var result = await _categoryService.GetAllAsync();
+        return StatusCode((int)result.StatusCode, result);
     }
 
-    // GET api/<CategoriesController>/5
+    // GET: api/category/{id}
     [HttpGet("{id}")]
-    public string Get(int id)
+    [ProducesResponseType(typeof(BaseResponse<CategoryGetDto>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.NotFound)]
+    public async Task<IActionResult> GetById(Guid id)
     {
-        return "value";
+        var result = await _categoryService.GetByIdAsync(id);
+        return StatusCode((int)result.StatusCode, result);
     }
 
-    // POST api/<CategoriesController>
+    // POST: api/category
     [HttpPost]
     [Authorize(Policy = Permissions.Category.Create)]
     [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.Created)]
     [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.BadRequest)]
-    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.InternalServerError)]
-    public async Task<IActionResult> Post([FromBody] CategoryCreateDto dto)
+    public async Task<IActionResult> Create([FromBody] CategoryCreateDto dto)
     {
         var result = await _categoryService.AddAsync(dto);
         return StatusCode((int)result.StatusCode, result);
     }
 
-    // PUT api/<CategoriesController>/5
+    // PUT: api/category/{id}
     [HttpPut("{id}")]
-    [Authorize]
+    [Authorize(Policy = Permissions.Category.Update)]
     [ProducesResponseType(typeof(BaseResponse<CategoryUpdateDto>), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.BadRequest)]
-    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.InternalServerError)]
-    public async Task<IActionResult> Put(Guid id, [FromBody] CategoryUpdateDto dto)
+    public async Task<IActionResult> Update(Guid id, [FromBody] CategoryUpdateDto dto)
     {
+        dto.Id = id; // ID-ni DTO-ya əlavə et
         var result = await _categoryService.UpdateAsync(dto);
         return StatusCode((int)result.StatusCode, result);
     }
 
-    // DELETE api/<CategoriesController>/5
+    // DELETE: api/category/{id}
     [HttpDelete("{id}")]
-    [Authorize]
+    [Authorize(Policy = Permissions.Category.Delete)]
+    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BaseResponse<string>), (int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> Delete(Guid id)
     {
         var result = await _categoryService.DeleteAsync(id);
         return StatusCode((int)result.StatusCode, result);
     }
-
 }

@@ -18,7 +18,6 @@ public class RolesController : ControllerBase
     }
 
 
-    // GET: api/<RolesController>
     [HttpGet("permissions")]
     public IActionResult GetAllPermissions()
     {
@@ -31,5 +30,12 @@ public class RolesController : ControllerBase
     {
         var result = await _roleService.CreateRole(dto);
         return StatusCode((int)result.StatusCode,result);
+    }
+
+    [HttpDelete("{roleName}")]
+    public async Task<IActionResult> Delete(string roleName)
+    {
+        var result = await _roleService.DeleteRole(roleName);
+        return StatusCode((int)result.StatusCode, result);
     }
 }   

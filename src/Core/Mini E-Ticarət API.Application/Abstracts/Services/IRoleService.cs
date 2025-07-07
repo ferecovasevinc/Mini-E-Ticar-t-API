@@ -6,4 +6,5 @@ namespace Mini_E_Ticarət_API.Application.Abstracts.Services;
 public interface IRoleService
 {
     Task<BaseResponse<string?>> CreateRole(RoleCreateDto dto);
+    Task<BaseResponse<string>> DeleteRole(string roleName);
 }
