@@ -63,6 +63,9 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
+
+
 
 builder.Services.AddAuthorization(options =>
 {
