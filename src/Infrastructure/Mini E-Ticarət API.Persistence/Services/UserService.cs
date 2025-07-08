@@ -149,9 +149,9 @@ public class UserService : IUserService
         return new("Roles successfully assigned to the user", HttpStatusCode.OK);
     }
 
-    public async Task<BaseResponse<string>> ConfirmEmail(string userId, string token)
+    public async Task<BaseResponse<string>> ConfirmEmail(Guid userId, string token)
     {
-        var existedUser = await _userManager.FindByIdAsync(userId);
+        var existedUser = await _userManager.FindByIdAsync(userId.ToString());
         if (existedUser is null)
         {
             return new("Email confirmation failed", HttpStatusCode.BadRequest);
