@@ -14,9 +14,9 @@ public class ProductRepository : Repository<Product>, IProductRepository
         _context = context;
     }
 
-    public async Task<List<Product>> GetMyProductsAsync(string userId)
+    public async Task<List<Product>> GetMyProductsAsync(Guid userId)
     {
-        return await GetByFiltered(p => p.AppUserId.ToString() == userId,
+        return await GetByFiltered(p => p.AppUserId == userId,
             new[] { (System.Linq.Expressions.Expression<Func<Product, object>>)(p => p.Category), p => p.Images })
             .ToListAsync();
     }

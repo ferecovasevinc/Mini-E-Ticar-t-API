@@ -3,11 +3,10 @@
 public record ProductDetailDto
 {
     public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string Name { get; set; } = null!;
+    public string Description { get; set; } = null!;
     public decimal Price { get; set; }
-    public bool IsAvailable { get; set; }
-    public string CategoryName { get; set; }
-    public List<string> ImageUrls { get; set; }
-    public string SellerEmail { get; set; }
+    public string CategoryName { get; set; } = null!;
+    public string OwnerName { get; set; } = null!;
+    public List<string> ImageUrls { get; set; } = new();
 }
