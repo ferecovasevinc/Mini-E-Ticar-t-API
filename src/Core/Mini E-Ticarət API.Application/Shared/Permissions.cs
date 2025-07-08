@@ -87,4 +87,22 @@ public static class Permissions
         };
     }
 
+    public static class Product
+    {
+        public const string Create = "Product.Create";
+        public const string Update = "Product.Update";
+        public const string Delete = "Product.Delete";
+        public const string Get = "Product.Get";
+        public const string GetMyProducts = "Product.GetMyProducts";
+
+        public static List<string> All = new()
+    {
+        Create,
+        Update,
+        Delete,
+        Get,
+        GetMyProducts
+    };
+    }
+
 }
