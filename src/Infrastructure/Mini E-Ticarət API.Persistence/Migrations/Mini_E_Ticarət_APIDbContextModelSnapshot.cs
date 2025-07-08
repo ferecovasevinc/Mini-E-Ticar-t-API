@@ -254,7 +254,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Favourite", b =>
@@ -285,7 +285,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Favourites");
+                    b.ToTable("Favourites", (string)null);
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Image", b =>
@@ -314,7 +314,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Order", b =>
@@ -349,7 +349,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.OrderProduct", b =>
@@ -376,7 +376,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderProducts", (string)null);
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Product", b =>
@@ -419,7 +419,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Review", b =>
@@ -454,7 +454,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

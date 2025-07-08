@@ -21,16 +21,18 @@ public class UserService : IUserService
     private SignInManager<AppUser> _signInManager { get; }
     private JwtSettings _jwtSettings { get;}
     private RoleManager<IdentityRole<Guid>> _roleManager { get; }
+    private IEmailService _emailService { get; }
 
     public UserService(UserManager<AppUser> userManager,
         SignInManager<AppUser> signInManager,
         IOptions<JwtSettings> jwtSettings,
-        RoleManager<IdentityRole<Guid>> roleManager)
+        RoleManager<IdentityRole<Guid>> roleManager,IEmailService emailService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _jwtSettings = jwtSettings.Value;
         _roleManager = roleManager;
+        _emailService = emailService;
     }
 
     public async Task<BaseResponse<string>> Register(UserRegisterDto dto)
@@ -62,6 +64,7 @@ public class UserService : IUserService
             }
 
         var confirmEmailLink = await GetEmailConfirmLink(newUser);
+        await _emailService.SendEmailAsync(new List<string> { newUser.Email}, "Email Confirmation", confirmEmailLink);
 
         return new BaseResponse<string>("Successfully created", HttpStatusCode.Created);
     }

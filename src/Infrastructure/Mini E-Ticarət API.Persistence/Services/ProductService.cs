@@ -11,8 +11,8 @@ namespace Mini_E_Ticarət_API.Persistence.Services;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _productRepository;
-    private readonly ICategoryRepository _categoryRepository;
+    private IProductRepository _productRepository { get; }
+    private ICategoryRepository _categoryRepository { get; }
 
     public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository)
     {

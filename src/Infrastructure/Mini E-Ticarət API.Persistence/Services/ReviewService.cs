@@ -10,7 +10,7 @@ namespace Mini_E_Ticarət_API.Persistence.Services;
 
 public class ReviewService : IReviewService
 {
-    private readonly IReviewRepository _reviewRepo;
+    private IReviewRepository _reviewRepo { get; }
 
     public ReviewService(IReviewRepository reviewRepo)
     {

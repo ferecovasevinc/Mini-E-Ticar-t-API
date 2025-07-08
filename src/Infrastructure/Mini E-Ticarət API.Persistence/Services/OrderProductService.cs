@@ -11,7 +11,7 @@ namespace Mini_E_Ticarət_API.Persistence.Services;
 
 public class OrderProductService : IOrderProductService
 {
-    private readonly IOrderProductRepository _repo;
+    private IOrderProductRepository _repo { get; }
 
     public OrderProductService(IOrderProductRepository repo)
     {

@@ -10,7 +10,7 @@ namespace Mini_E_Ticarət_API.Persistence.Services;
 
 public class FavouriteService : IFavouriteService
 {
-    private readonly IFavouriteRepository _favouriteRepository;
+    private IFavouriteRepository _favouriteRepository { get; }
 
     public FavouriteService(IFavouriteRepository favouriteRepository)
     {

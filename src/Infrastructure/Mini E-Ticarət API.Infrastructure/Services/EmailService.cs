@@ -10,7 +10,7 @@ namespace Mini_E_Ticarət_API.Infrastructure.Services;
 
 public class EmailService : IEmailService
 {
-    private readonly EmailSettings _emailSettings;
+    private EmailSettings _emailSettings { get; }
 
     public EmailService(IOptions<EmailSettings> emailSettings)
     {

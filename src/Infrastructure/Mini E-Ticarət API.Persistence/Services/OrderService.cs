@@ -10,7 +10,7 @@ namespace Mini_E_Ticarət_API.Persistence.Services;
 
 public class OrderService : IOrderService
 {
-    private readonly IOrderRepository _orderRepository;
+    private IOrderRepository _orderRepository { get; }
 
     public OrderService(IOrderRepository orderRepository)
     {

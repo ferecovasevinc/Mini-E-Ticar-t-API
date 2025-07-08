@@ -10,7 +10,7 @@ namespace Mini_E_Ticarət_API.Persistence.Services;
 
 public class ImageService : IImageService
 {
-    private readonly IImageRepository _imageRepository;
+    private IImageRepository _imageRepository { get; }
 
     public ImageService(IImageRepository imageRepository)
     {
