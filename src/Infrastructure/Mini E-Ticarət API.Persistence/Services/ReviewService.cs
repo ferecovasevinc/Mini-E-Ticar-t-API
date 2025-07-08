@@ -17,14 +17,14 @@ public class ReviewService : IReviewService
         _reviewRepo = reviewRepo;
     }
 
-    public async Task<BaseResponse<string>> CreateAsync(ReviewCreateDto dto, string userId)
+    public async Task<BaseResponse<string>> CreateAsync(ReviewCreateDto dto, Guid userId)
     {
         Review review = new()
         {
             Comment = dto.Comment,
             Rating = dto.Rating,
             ProductId = dto.ProductId,
-            AppUserId = Guid.Parse(userId)
+            AppUserId = userId
         };
 
         await _reviewRepo.AddAsync(review);
@@ -33,10 +33,10 @@ public class ReviewService : IReviewService
         return new BaseResponse<string>("Review created", HttpStatusCode.Created);
     }
 
-    public async Task<BaseResponse<string>> UpdateAsync(ReviewUpdateDto dto, string userId)
+    public async Task<BaseResponse<string>> UpdateAsync(ReviewUpdateDto dto, Guid userId)
     {
         var review = await _reviewRepo.GetByIdAsync(dto.Id);
-        if (review == null || review.AppUserId != Guid.Parse(userId))
+        if (review == null || review.AppUserId != userId)
             return new BaseResponse<string>("Not found or unauthorized", null, HttpStatusCode.Forbidden);
 
         review.Comment = dto.Comment;
@@ -47,10 +47,10 @@ public class ReviewService : IReviewService
         return new BaseResponse<string>("Review updated", HttpStatusCode.OK);
     }
 
-    public async Task<BaseResponse<string>> DeleteAsync(Guid id, string userId)
+    public async Task<BaseResponse<string>> DeleteAsync(Guid id, Guid userId)
     {
         var review = await _reviewRepo.GetByIdAsync(id);
-        if (review == null || review.AppUserId != Guid.Parse(userId))
+        if (review == null || review.AppUserId != userId)
             return new BaseResponse<string>("Not found or unauthorized", null, HttpStatusCode.Forbidden);
 
         _reviewRepo.Delete(review);

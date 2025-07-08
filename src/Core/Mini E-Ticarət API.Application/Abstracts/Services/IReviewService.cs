@@ -5,8 +5,8 @@ namespace Mini_E_Ticarət_API.Application.Abstracts.Services;
 
 public interface IReviewService
 {
-    Task<BaseResponse<string>> CreateAsync(ReviewCreateDto dto, string userId);
-    Task<BaseResponse<string>> UpdateAsync(ReviewUpdateDto dto, string userId);
-    Task<BaseResponse<string>> DeleteAsync(Guid id, string userId);
+    Task<BaseResponse<string>> CreateAsync(ReviewCreateDto dto, Guid userId);
+    Task<BaseResponse<string>> UpdateAsync(ReviewUpdateDto dto, Guid userId);
+    Task<BaseResponse<string>> DeleteAsync(Guid id, Guid userId);
     Task<BaseResponse<List<ReviewListDto>>> GetByProductIdAsync(Guid productId);
 }
