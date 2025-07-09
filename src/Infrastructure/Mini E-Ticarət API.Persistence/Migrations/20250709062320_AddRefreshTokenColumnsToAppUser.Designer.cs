@@ -12,8 +12,8 @@ using Mini_E_Ticarət_API.Persistence.Contexts;
 namespace Mini_E_Ticarət_API.Persistence.Migrations
 {
     [DbContext(typeof(Mini_E_Ticarət_APIDbContext))]
-    [Migration("20250706163909_AppUserRefreshToken")]
-    partial class AppUserRefreshToken
+    [Migration("20250709062320_AddRefreshTokenColumnsToAppUser")]
+    partial class AddRefreshTokenColumnsToAppUser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,10 +207,9 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("RefreshToken")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                    b.Property<DateTime?>("RefreshTokenExpireDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
@@ -327,8 +326,8 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("BuyerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("BuyerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -368,8 +367,14 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");

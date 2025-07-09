@@ -118,7 +118,7 @@ public class UserService : IUserService
         TokenResponse response = new()
         {
             Token = newAccessToken,
-            ExpireDate = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
+            ExpireDate = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpireDays),
             RefreshToken = newRefreshToken
         };
 
@@ -207,7 +207,7 @@ public class UserService : IUserService
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecretKey));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        var expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes);
+        var expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpireDays);
 
         var jwtToken = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
@@ -252,7 +252,7 @@ public class UserService : IUserService
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
+            expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpireDays),
             signingCredentials: creds
             );
 

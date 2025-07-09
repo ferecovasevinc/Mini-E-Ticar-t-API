@@ -19,7 +19,7 @@ public class EmailService : IEmailService
 
     public async Task SendEmailAsync(IEnumerable<string> toEmails, string subject, string body)
     {
-        using var smtp = new SmtpClient(_emailSettings.SmtpServer, _emailSettings.SmtpPort)
+        using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
         {
             Credentials = new NetworkCredential(_emailSettings.SenderEmail, _emailSettings.Password),
             EnableSsl = true

@@ -254,7 +254,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Favourite", b =>
@@ -285,7 +285,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Favourites", (string)null);
+                    b.ToTable("Favourites");
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Image", b =>
@@ -314,7 +314,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Order", b =>
@@ -323,8 +323,8 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("BuyerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("BuyerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -349,7 +349,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.OrderProduct", b =>
@@ -364,8 +364,14 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -376,7 +382,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderProducts", (string)null);
+                    b.ToTable("OrderProducts");
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Product", b =>
@@ -419,7 +425,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Mini_E_Ticarət_API.Domain.Entities.Review", b =>
@@ -454,7 +460,7 @@ namespace Mini_E_Ticarət_API.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
