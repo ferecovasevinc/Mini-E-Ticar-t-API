@@ -9,11 +9,11 @@ namespace Mini_E_Ticarət_API.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class OrderProductController : ControllerBase
+public class OrderProductsController : ControllerBase
 {
     private readonly IOrderProductService _service;
 
-    public OrderProductController(IOrderProductService service)
+    public OrderProductsController(IOrderProductService service)
     {
         _service = service;
     }

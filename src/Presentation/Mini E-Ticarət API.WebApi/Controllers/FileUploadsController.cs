@@ -7,10 +7,10 @@ namespace Mini_E_Ticarət_API.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class FileUploadController : ControllerBase
+public class FileUploadsController : ControllerBase
 {
     private IFileUploadService _fileUploadService {  get; }
-    public FileUploadController(IFileUploadService fileUploadService)
+    public FileUploadsController(IFileUploadService fileUploadService)
     {
         _fileUploadService = fileUploadService;
     }

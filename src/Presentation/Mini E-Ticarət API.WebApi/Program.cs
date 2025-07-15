@@ -19,6 +19,7 @@ using Mini_E_Ticarət_API.Persistence.Services;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Mini_E_Ticarət_API.Application.Shared.Helpers;
+using Mini_E_Ticarət_API.Application.MappingProfiles;
 
 
 
@@ -32,6 +33,9 @@ builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddAutoMapper(typeof(ProductProfile).Assembly);
+
 
 builder.Services.AddSwaggerGen(options =>
 {
