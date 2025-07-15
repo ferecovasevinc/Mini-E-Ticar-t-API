@@ -80,45 +80,4 @@ public class ProductsController : ControllerBase
         var response = await _productService.GetMyProductsAsync(userId);
         return StatusCode((int)response.StatusCode, response);
     }
-
-    // POST: /api/products/{id}/favorite
-    [HttpPost("{id}/favorite")]
-    [Authorize(Roles = "Buyer,Seller")]
-    public async Task<IActionResult> AddToFavorite(Guid id)
-    {
-        var userId = User.GetUserId();
-        var dto = new FavouriteCreateDto
-        {
-            Name = "Favourite", 
-            AppUserId = userId,
-            ProductId = id
-        };
-        var response = await _favouriteService.CreateAsync(dto);
-        return StatusCode((int)response.StatusCode, response);
-    }
-
-    // DELETE: /api/products/{id}/favorite
-    [HttpDelete("{id}/favorite")]
-    [Authorize(Roles = "Buyer,Seller")]
-    public async Task<IActionResult> RemoveFromFavorite(Guid id)
-    {
-        var userId = User.GetUserId();
-        var userFavourites = await _favouriteService.GetByUserIdAsync(userId);
-        var fav = userFavourites.Data?.FirstOrDefault(f => f.ProductId == id);
-        if (fav == null)
-            return NotFound("Favourite not found");
-
-        var response = await _favouriteService.DeleteAsync(fav.Id);
-        return StatusCode((int)response.StatusCode, response);
-    }
-
-    // GET: /api/products/favorites
-    [HttpGet("favorites")]
-    [Authorize(Roles = "Buyer,Seller")]
-    public async Task<IActionResult> GetMyFavourites()
-    {
-        var userId = User.GetUserId();
-        var response = await _favouriteService.GetByUserIdAsync(userId);
-        return StatusCode((int)response.StatusCode, response);
-    }
 }
