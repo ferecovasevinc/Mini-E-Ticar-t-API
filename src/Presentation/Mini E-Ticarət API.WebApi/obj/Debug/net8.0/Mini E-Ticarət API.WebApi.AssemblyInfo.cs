@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mini E-Ticarət API.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4b6903b0ba825ae5d704df2ee43210388a6f580")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mini E-Ticarət API.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mini E-Ticarət API.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
